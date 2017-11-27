@@ -89,7 +89,7 @@
                 <artifactId>wildfly-swarm-plugin</artifactId>
                 <version>${version.wildfly.swarm}</version>
                 <configuration>
-                    <mainClass>org.packt.swarm.petstore.catalog.Main</mainClass>
+                    <mainClass>org.packt.swarm.petstore.order.Main</mainClass>
                 </configuration>
                 <executions>
                     <execution>
