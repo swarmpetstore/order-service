@@ -11,8 +11,8 @@ import java.util.Map;
 @Entity
 @Table(name = "order")
 @NamedQueries({
-        @NamedQuery(name="Item.findById",
-                query="SELECT i FROM Item i WHERE i.id = :id"),
+        @NamedQuery(name="Order.findById",
+                query="SELECT o FROM Order o WHERE o.id = :id"),
 })
 public class Order {
 
