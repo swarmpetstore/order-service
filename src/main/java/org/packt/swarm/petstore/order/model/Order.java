@@ -1,12 +1,11 @@
-package org.packt.swarm.petstore.order;
+package org.packt.swarm.petstore.order.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 @Entity
 @Table(name = "order")
@@ -16,7 +15,7 @@ import java.util.Map;
 })
 public class Order {
 
-    enum OrderState {
+    public enum OrderState {
         NEW, PAID;
     }
 
@@ -36,12 +35,15 @@ public class Order {
     private List<OrderItem> items;
 
 
-    public Order(int customerId, Map<Integer, Integer> itemMap){
+    public Order(int customerId, List<Integer> itemIds, List<Integer> quantities){
         this.customerId = customerId;
         state = OrderState.NEW;
         items = new ArrayList<>();
-        for(Integer itemId: itemMap.keySet()){
-            items.add(new OrderItem(itemId, itemMap.get(itemId)));
+
+        Iterator<Integer> i = itemIds.iterator();
+        Iterator<Integer> q = quantities.iterator();
+        for(;i.hasNext();i.next(),q.next()){
+            items.add(new OrderItem(i.next(), q.next()));
         }
     }
 

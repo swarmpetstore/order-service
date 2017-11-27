@@ -1,4 +1,4 @@
-package org.packt.swarm.petstore.order;
+package org.packt.swarm.petstore.order.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -28,4 +28,15 @@ public class OrderItem {
         this.quantity = quantity;
     }
 
+    public Order getOrder() {
+        return order;
+    }
+
+    public int getItemId() {
+        return itemId;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
 }
