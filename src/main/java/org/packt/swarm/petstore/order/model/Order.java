@@ -24,7 +24,7 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "orders_sequence")
     @SequenceGenerator(name = "orders_sequence", sequenceName = "orders_id_seq")
     @JsonIgnore
-    private int id;
+    private Integer id;
 
     @Column(name="customer_id")
     private int customerId;
@@ -35,7 +35,7 @@ public class Order {
     @OneToMany(cascade=CascadeType.ALL, mappedBy = "order")
     private List<OrderItem> items;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
