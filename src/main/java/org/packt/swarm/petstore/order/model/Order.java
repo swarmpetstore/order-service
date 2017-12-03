@@ -3,9 +3,17 @@ package org.packt.swarm.petstore.order.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.apache.commons.lang.builder.ToStringBuilder;
 
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Iterator;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import java.util.List;
 
 @Entity
@@ -24,7 +32,7 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "orders_sequence")
     @SequenceGenerator(name = "orders_sequence", sequenceName = "orders_id_seq")
     @JsonIgnore
-    private Integer id;
+    private Long id;
 
     @Column(name="customer_id")
     private int customerId;
@@ -35,11 +43,11 @@ public class Order {
     @OneToMany(cascade=CascadeType.ALL, mappedBy = "order")
     private List<OrderItem> items;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

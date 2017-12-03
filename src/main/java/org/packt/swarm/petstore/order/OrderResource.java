@@ -30,7 +30,7 @@ public class OrderResource {
     public Response createOrder(Order order) {
         try {
             System.out.println("MAM TAKIEGO ORDERA "+ ToStringBuilder.reflectionToString(order));
-            int orderId = orderService.createOrder(order);
+            long orderId = orderService.createOrder(order);
             return Response.ok(orderId).build();
         } catch (Exception e) {
             return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();

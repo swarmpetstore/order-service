@@ -20,7 +20,7 @@ public class OrderService {
     }
 
     @Transactional
-    public int createOrder(Order order){
+    public Long createOrder(Order order){
         em.persist(order);
         return order.getId();
     }
