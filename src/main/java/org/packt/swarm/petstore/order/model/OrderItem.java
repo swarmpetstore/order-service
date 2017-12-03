@@ -18,9 +18,9 @@ public class OrderItem {
     @JoinColumn(name="ID")
     private Order order;
 
-    @Column
+    @Column(name="item_id")
     private int itemId;
-    @Column
+    @Column(name="quantity")
     private int quantity;
 
     public OrderItem(int itemId, int quantity){

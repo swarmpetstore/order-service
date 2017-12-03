@@ -25,10 +25,10 @@ public class Order {
     @JsonIgnore
     private int id;
 
-    @Column
+    @Column(name="customer_id")
     private int customerId;
 
-    @Column
+    @Column(name="state")
     private OrderState state;
 
     @OneToMany(mappedBy = "order")
