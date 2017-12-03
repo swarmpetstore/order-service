@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class OrderItem {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "item_sequence")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "item_sequence")
     @SequenceGenerator(name = "item_sequence", sequenceName = "order_item_id_seq")
     @JsonIgnore
     private Long id;
