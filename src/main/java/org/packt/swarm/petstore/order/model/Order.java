@@ -21,7 +21,7 @@ public class Order {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "orders_sequence")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "orders_sequence")
     @SequenceGenerator(name = "orders_sequence", sequenceName = "orders_id_seq")
     @JsonIgnore
     private Integer id;
