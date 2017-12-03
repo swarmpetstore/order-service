@@ -1,5 +1,6 @@
 package org.packt.swarm.petstore.order;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
 import org.packt.swarm.petstore.order.model.Order;
 
 import javax.inject.Inject;
@@ -28,6 +29,7 @@ public class OrderResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createOrder(Order order) {
         try {
+            System.out.println("MAM TAKIEGO ORDERA "+ ToStringBuilder.reflectionToString(order));
             int orderId = orderService.createOrder(order);
             return Response.ok(orderId).build();
         } catch (Exception e) {
