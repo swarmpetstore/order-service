@@ -8,7 +8,7 @@ import java.util.Iterator;
 import java.util.List;
 
 @Entity
-@Table(name = "order")
+@Table(name = "orders")
 @NamedQueries({
         @NamedQuery(name="Order.findById",
                 query="SELECT o FROM Order o WHERE o.id = :id"),
@@ -20,8 +20,8 @@ public class Order {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "order_sequence")
-    @SequenceGenerator(name = "order_sequence", sequenceName = "order_id_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "orders_sequence")
+    @SequenceGenerator(name = "orders_sequence", sequenceName = "orders_id_seq")
     @JsonIgnore
     private int id;
 
