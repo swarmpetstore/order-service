@@ -1,7 +1,6 @@
 package org.packt.swarm.petstore.order.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.apache.commons.lang.builder.ToStringBuilder;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -24,23 +23,16 @@ import java.util.List;
 })
 public class Order {
 
-    public enum OrderState {
-        NEW, PAID;
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "orders_sequence")
     @SequenceGenerator(name = "orders_sequence", sequenceName = "orders_id_seq", allocationSize = 1)
-    @JsonIgnore
     private Long id;
 
     @Column(name="customer_id")
     private int customerId;
 
-    @Column(name="state")
-    private OrderState state;
-
     @OneToMany(cascade=CascadeType.ALL, mappedBy = "order")
+    @JsonManagedReference
     private List<OrderItem> items;
 
     public Long getId() {
@@ -59,25 +51,12 @@ public class Order {
         this.customerId = customerId;
     }
 
-    public OrderState getState() {
-        return state;
-    }
-
-    public void setState(OrderState state) {
-        this.state = state;
-    }
-
     public List<OrderItem> getItems() {
         return items;
     }
 
     public void setItems(List<OrderItem> items) {
         this.items = items;
-    }
-
-    @Override
-    public String toString() {
-        return ToStringBuilder.reflectionToString(this);
     }
 }
 

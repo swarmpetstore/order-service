@@ -1,5 +1,6 @@
 package org.packt.swarm.petstore.order.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.apache.commons.lang.builder.ToStringBuilder;
 
@@ -12,11 +13,11 @@ public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "item_sequence")
     @SequenceGenerator(name = "item_sequence", sequenceName = "order_item_id_seq", allocationSize = 1)
-    @JsonIgnore
     private Long id;
 
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="order_id", nullable=false)
+    @JsonBackReference
     private Order order;
 
     @Column(name="item_id")
@@ -56,8 +57,4 @@ public class OrderItem {
         this.quantity = quantity;
     }
 
-    @Override
-    public String toString() {
-        return ToStringBuilder.reflectionToString(this);
-    }
 }
