@@ -11,7 +11,7 @@ public class OrderItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "item_sequence")
-    @SequenceGenerator(name = "item_sequence", sequenceName = "order_item_id_seq")
+    @SequenceGenerator(name = "item_sequence", sequenceName = "order_item_id_seq", allocationSize = 1)
     @JsonIgnore
     private Long id;
 

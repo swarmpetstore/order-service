@@ -30,7 +30,7 @@ public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "orders_sequence")
-    @SequenceGenerator(name = "orders_sequence", sequenceName = "orders_id_seq")
+    @SequenceGenerator(name = "orders_sequence", sequenceName = "orders_id_seq", allocationSize = 1)
     @JsonIgnore
     private Long id;
 
