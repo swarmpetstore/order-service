@@ -32,7 +32,7 @@ public class Order {
     @Column(name="state")
     private OrderState state;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(cascade=CascadeType.ALL, mappedBy = "order")
     private List<OrderItem> items;
 
     public int getId() {
