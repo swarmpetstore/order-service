@@ -28,8 +28,8 @@ public class OrderResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createOrder(@QueryParam("customerId") int customerId, @QueryParam("itemIds") List<Integer> itemIds, @QueryParam("quantities") List<Integer> quantites) {
         try {
-            Order order = orderService.createOrder(customerId, itemIds, quantites);
-            return Response.ok(order).build();
+            int orderId = orderService.createOrder(customerId, itemIds, quantites);
+            return Response.ok(orderId).build();
         } catch (Exception e) {
             return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();
         }

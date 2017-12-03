@@ -20,17 +20,10 @@ public class OrderService {
     }
 
     @Transactional
-    public Order createOrder(int customerId, List<Integer> itemIds, List<Integer> quantities){
+    public int createOrder(int customerId, List<Integer> itemIds, List<Integer> quantities){
         Order order = new Order(customerId, itemIds, quantities);
         em.persist(order);
-        return order;
+        return order.getId();
     }
 
-    @Transactional
-    public Order changeState(int orderId, Order.OrderState state){
-        Order order = findById(orderId);
-        order.setState(state);
-        em.persist(order);
-        return order;
-    }
 }
