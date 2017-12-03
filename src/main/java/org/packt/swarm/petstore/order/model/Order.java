@@ -34,25 +34,20 @@ public class Order {
     @OneToMany(mappedBy = "order")
     private List<OrderItem> items;
 
-
-    public Order(int customerId, List<Integer> itemIds, List<Integer> quantities){
-        this.customerId = customerId;
-        state = OrderState.NEW;
-        items = new ArrayList<>();
-
-        Iterator<Integer> i = itemIds.iterator();
-        Iterator<Integer> q = quantities.iterator();
-        for(;i.hasNext();i.next(),q.next()){
-            items.add(new OrderItem(i.next(), q.next()));
-        }
-    }
-
     public int getId() {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public int getCustomerId() {
         return customerId;
+    }
+
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
     }
 
     public OrderState getState() {
@@ -66,4 +61,9 @@ public class Order {
     public List<OrderItem> getItems() {
         return items;
     }
+
+    public void setItems(List<OrderItem> items) {
+        this.items = items;
+    }
 }
+

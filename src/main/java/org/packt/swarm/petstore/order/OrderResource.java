@@ -26,9 +26,9 @@ public class OrderResource {
     @Path("order")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response createOrder(@QueryParam("customerId") int customerId, @QueryParam("itemIds") List<Integer> itemIds, @QueryParam("quantities") List<Integer> quantites) {
+    public Response createOrder(Order order) {
         try {
-            int orderId = orderService.createOrder(customerId, itemIds, quantites);
+            int orderId = orderService.createOrder(order);
             return Response.ok(orderId).build();
         } catch (Exception e) {
             return Response.status(Response.Status.BAD_REQUEST).entity(e.getMessage()).build();

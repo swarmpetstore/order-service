@@ -20,8 +20,7 @@ public class OrderService {
     }
 
     @Transactional
-    public int createOrder(int customerId, List<Integer> itemIds, List<Integer> quantities){
-        Order order = new Order(customerId, itemIds, quantities);
+    public int createOrder(Order order){
         em.persist(order);
         return order.getId();
     }
